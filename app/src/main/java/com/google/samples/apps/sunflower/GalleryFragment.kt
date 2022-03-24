@@ -61,6 +61,7 @@ class GalleryFragment : Fragment() {
 
     private fun search(query: String) {
         // Make sure we cancel the previous job before creating a new one
+        // job을 확실히 cancel 해주는 이유가 무엇일까??
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
             viewModel.searchPictures(query).collectLatest {
