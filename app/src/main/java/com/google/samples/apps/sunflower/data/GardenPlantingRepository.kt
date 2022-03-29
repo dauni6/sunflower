@@ -16,6 +16,8 @@
 
 package com.google.samples.apps.sunflower.data
 
+import android.util.Log
+import kotlinx.coroutines.currentCoroutineContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -25,6 +27,7 @@ class GardenPlantingRepository @Inject constructor(
 ) {
 
     suspend fun createGardenPlanting(plantId: String) {
+        Log.d("TEST", "currentCoroutineContext = ${currentCoroutineContext()} / thread = ${Thread.currentThread()}") // => 메인에서 돌아감
         val gardenPlanting = GardenPlanting(plantId)
         gardenPlantingDao.insertGardenPlanting(gardenPlanting)
     }

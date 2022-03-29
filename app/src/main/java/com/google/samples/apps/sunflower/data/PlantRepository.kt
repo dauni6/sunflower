@@ -16,6 +16,9 @@
 
 package com.google.samples.apps.sunflower.data
 
+import android.util.Log
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -30,7 +33,10 @@ class PlantRepository @Inject constructor(private val plantDao: PlantDao) {
 
     fun getPlants() = plantDao.getPlants()
 
-    fun getPlant(plantId: String) = plantDao.getPlant(plantId)
+    fun getPlant(plantId: String): Flow<Plant> {
+        Log.d("TEST", "thread = ${Thread.currentThread()}")
+        return plantDao.getPlant(plantId)
+    }
 
     fun getPlantsWithGrowZoneNumber(growZoneNumber: Int) =
         plantDao.getPlantsWithGrowZoneNumber(growZoneNumber)

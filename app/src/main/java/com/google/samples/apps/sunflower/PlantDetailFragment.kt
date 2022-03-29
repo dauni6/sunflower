@@ -151,7 +151,15 @@ class PlantDetailFragment : Fragment() {
         fab.hide()
     }
 
+    /**
+     * Functional Interface : 함수형 인터페이스
+     * 하나의 추상 메서드(SAM:Single Abstract Method)만 가지는 인터페이스를 함수형 인터페이스라고 한다.
+     * 함수형 인터페이스는 여러개의 non-abstract 메서드를 가질 수는 있지만, abstract 메서드는 바드시 꼭 한 개만 가져야 한다.
+     */
     fun interface Callback {
+//        fun plus(num: Int) {
+//          // 여기 이렇게 non-abstract 메서드가 있어도 됨.
+//        }
         fun add(plant: Plant?)
     }
 }

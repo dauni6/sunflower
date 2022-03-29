@@ -36,7 +36,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class PlantListViewModel @Inject internal constructor(
-    plantRepository: PlantRepository,
+    private val plantRepository: PlantRepository,
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -88,7 +88,7 @@ class PlantListViewModel @Inject internal constructor(
         }
     }
 
-    fun setGrowZoneNumber(num: Int) {
+    fun setGrowZoneNumber(num: Int = 9) {
         growZone.value = num
     }
 

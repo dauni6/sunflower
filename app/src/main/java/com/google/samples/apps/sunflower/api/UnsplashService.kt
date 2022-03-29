@@ -40,6 +40,7 @@ interface UnsplashService {
     ): UnsplashSearchResponse
 
     companion object {
+        // 실제로 이렇게 사용한다는건가 아님 귀찮아서 여기다가 BASE_URL이랑 Retrofit 때려박은건가..?
         private const val BASE_URL = "https://api.unsplash.com/"
 
         fun create(): UnsplashService {
