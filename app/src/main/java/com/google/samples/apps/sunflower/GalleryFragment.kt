@@ -71,4 +71,10 @@ class GalleryFragment : Fragment() {
             }
         }
     }
+
+    override fun onStop() {
+        super.onStop()
+        searchJob?.cancel()
+    }
+
 }

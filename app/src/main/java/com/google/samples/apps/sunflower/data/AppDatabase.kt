@@ -25,6 +25,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
+import com.google.samples.apps.sunflower.data.dao.gardenplanting.GardenPlantingDao
+import com.google.samples.apps.sunflower.data.dao.plant.PlantDao
 import com.google.samples.apps.sunflower.utilities.DATABASE_NAME
 import com.google.samples.apps.sunflower.utilities.PLANT_DATA_FILENAME
 import com.google.samples.apps.sunflower.workers.SeedDatabaseWorker

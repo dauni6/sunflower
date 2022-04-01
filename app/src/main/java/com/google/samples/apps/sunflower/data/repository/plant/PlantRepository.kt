@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.sunflower.data
+package com.google.samples.apps.sunflower.data.repository.plant
 
 import android.util.Log
-import kotlinx.coroutines.currentCoroutineContext
+import com.google.samples.apps.sunflower.data.Plant
+import com.google.samples.apps.sunflower.data.dao.plant.PlantDao
+import com.google.samples.apps.sunflower.di.IoDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -29,7 +32,10 @@ import javax.inject.Singleton
  * query execution off of the main thread.
  */
 @Singleton
-class PlantRepository @Inject constructor(private val plantDao: PlantDao) {
+class PlantRepository @Inject constructor(
+    private val plantDao: PlantDao,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+) {
 
     fun getPlants() = plantDao.getPlants()
 

@@ -17,7 +17,7 @@
 package com.google.samples.apps.sunflower.api
 
 import com.google.samples.apps.sunflower.BuildConfig
-import com.google.samples.apps.sunflower.data.UnsplashSearchResponse
+import com.google.samples.apps.sunflower.data.response.UnsplashSearchResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
@@ -29,6 +29,11 @@ import retrofit2.http.Query
 /**
  * Used to connect to the Unsplash API to fetch photos
  */
+
+// https://thdev.tech/kotlin/2021/01/12/Retrofit-Coroutines/
+// 위 글에서 보면 Retrofit이 내부적으로 IO처리를 해주기 때문에 딱히 withContext() 처리를 해줄 필욘 없다고한다.
+// 단, 대용량으로 보낼떈 해주는게 좋다고 한다. 해줄필요가 없다곤 하나 해줘도 문제가 생기는게 아니라면 걍 하는게 좋겠다고 생각한다.
+// 단순히 알고 사용하는것과 모르고 사용하는것의 차이라 생각한다.
 interface UnsplashService {
 
     @GET("search/photos")
