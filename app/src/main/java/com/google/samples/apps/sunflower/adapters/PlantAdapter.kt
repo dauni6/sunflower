@@ -28,12 +28,13 @@ import com.google.samples.apps.sunflower.PlantListFragment
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.databinding.ListItemPlantBinding
 
+// 분석완료
 /**
  * Adapter for the [RecyclerView] in [PlantListFragment].
  */
-class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallback()) {
+class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantViewHolder>(PlantDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantViewHolder {
         return PlantViewHolder(
             ListItemPlantBinding.inflate(
                 LayoutInflater.from(parent.context),
@@ -43,9 +44,8 @@ class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallba
         )
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val plant = getItem(position)
-        (holder as PlantViewHolder).bind(plant)
+    override fun onBindViewHolder(holder: PlantViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
     class PlantViewHolder(
@@ -79,6 +79,7 @@ class PlantAdapter : ListAdapter<Plant, RecyclerView.ViewHolder>(PlantDiffCallba
     }
 }
 
+// companion object 안에서 object로 만드는게 아니라 그냥 클래스로 박아버렸네
 private class PlantDiffCallback : DiffUtil.ItemCallback<Plant>() {
 
     override fun areItemsTheSame(oldItem: Plant, newItem: Plant): Boolean {

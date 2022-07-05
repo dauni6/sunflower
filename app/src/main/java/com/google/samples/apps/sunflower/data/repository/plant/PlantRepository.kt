@@ -19,8 +19,6 @@ package com.google.samples.apps.sunflower.data.repository.plant
 import android.util.Log
 import com.google.samples.apps.sunflower.data.Plant
 import com.google.samples.apps.sunflower.data.dao.plant.PlantDao
-import com.google.samples.apps.sunflower.di.IoDispatcher
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -33,8 +31,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class PlantRepository @Inject constructor(
-    private val plantDao: PlantDao,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+    private val plantDao: PlantDao
 ) {
 
     fun getPlants() = plantDao.getPlants()

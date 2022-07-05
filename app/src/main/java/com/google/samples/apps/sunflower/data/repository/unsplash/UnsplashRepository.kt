@@ -24,7 +24,9 @@ import com.google.samples.apps.sunflower.data.UnsplashPagingSource
 import com.google.samples.apps.sunflower.data.UnsplashPhoto
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class UnsplashRepository @Inject constructor(private val service: UnsplashService) {
 
     fun getSearchResultStream(query: String): Flow<PagingData<UnsplashPhoto>> {
